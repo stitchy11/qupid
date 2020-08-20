@@ -1,0 +1,12 @@
+body {
+background: #ffd400; !important
+}
+
+div.card {
+    margin : 0 50px 0 50px;
+    border: transparent;
+    border-radius:20px;
+}
+div.card-body a.btn {
+    border-radius:20px;
+}

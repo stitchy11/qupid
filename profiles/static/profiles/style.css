@@ -1,0 +1,19 @@
+/* '아이들의 가족이 되어주세요' */
+div#title {
+margin: 0 auto;
+padding:60px 0;
+}
+div#title h1 {
+text-align: center;
+font-weight:bold;
+}
+div.search{
+float:right;
+}
+
+hr#hr {
+border:solid 1.5px #ffd400;
+width:70%;
+}
+
+

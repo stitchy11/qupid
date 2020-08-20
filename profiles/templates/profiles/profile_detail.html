@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}All Profiles Page{% endblock %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'profiles/style.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <img src="{{profiles.image.url}}" width="100%">
+            </div>
+            <div class="col">
+                <h3 class="display-6">{{profiles.name}}</h3><br/>
+                <p>
+                    <span class="badge badge-secondary">나이</span>
+                    &#8361;{{profiles.age}}
+                </p>
+                <p>
+                    <span class="badge badge-secondary">성별</span>
+                    {{profiles.get_gender_display}}
+                </p><br/>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

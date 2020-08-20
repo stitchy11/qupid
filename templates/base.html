@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?after">
+    <!-- jquery slim 지우고 minified 추가 -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+
+    {% block style %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'qupid:main' %}"><img class="d-block" src="{% static 'images/logo.png' %}" width="100px"></a>
+
+        </div>
+        <div id="navbar" class="collapse navbar-collapse justify-content-center">
+              <ul id="nav1" class="nav">
+                    <li class="nav-item" id="intro">
+                        <a class="nav-link text-dark" href="{% url 'intro:intro' %}">큐피드 소개</a>
+                        <div class="menu-border" id="intro-border"></div>
+                    </li>
+                   <li class="nav-item" id="profiles">
+                        <a class="nav-link text-dark" href="{% url 'profiles:all_profiles' %}">유기견 프로필</a>
+                        <div class="menu-border" id="profiles-border"></div>
+                   </li>
+                  <li class="nav-item" id="product">
+                        <a class="nav-link text-dark" href="{% url 'shop:all_product' %}">구매하기</a>
+                        <div class="menu-border" id="product-border"></div>
+                  </li>
+                  <li class="nav-item dropdown show" id="community">
+                      <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown4" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">커뮤니티</a>
+                      <div class="menu-border" id="com-border"></div>
+                      <ul class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarDropdown4">
+                          <li class="hz">
+                              <a class="dropdown-item" href="{% url 'community:qna' %}">Q&A</a>
+                              <span>|</span>
+                              <a class="dropdown-item" href="{% url 'community:all_notice' %}">공지</a>
+                              <span>|</span>
+                              <a class="dropdown-item" href="{% url 'community:all_event' %}">이벤트</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+              <ul id="nav2" class="nav">
+                  <li id="login" class="nav-item">
+                      <a class="nav-link text-dark" href="#">&nbsp; 로그인</a>
+                      <span id="log-span">|</span>
+                      <a class="nav-link text-dark" href="#">회원가입</a>
+                  </li>
+              </ul>
+        </div>
+    </nav>
+    {% block content %}{% endblock %}
+    <div class="jumbotron text-center mt-5 mb-0">
+        <p>&copy;푸터 내용 채우기</p>
+    </div>
+    {% block script %}{% endblock %}
+    <script> $('.carousel').carousel({
+    interval: 2000 })
+    $(document).on('click','.navbar-collapse.in',function(e) {
+    if( $(e.target).is('a') ) {
+        $(this).collapse('hide');
+    }
+    });
+
+    $('ul#nav1>li.nav-item').on('click', function(){
+        $('ul#nav1>li.nav-item').removeClass('selected');
+        $(this).addClass('selected');
+    });
+    $('div.menu-border').on('click', function(){
+        $('div.menu-border').removeClass('selected');
+        $(this).addClass('selected');
+    });
+
+    $(function(){
+    var subPage = new Array;
+    subPage[0] = "intro";
+    subPage[1] = "profiles";
+    subPage[2] = "shop";
+    subPage[3] = "community";
+    var url = location.href;
+    var getAr0 = url.indexOf(subPage[0]);
+    var getAr1 = url.indexOf(subPage[1]);
+    var getAr2 = url.indexOf(subPage[2]);
+    var getAr3 = url.indexOf(subPage[3]);
+    if(getAr0 != -1){
+        $('ul#nav1>li#intro,div#intro-border').addClass("selected")
+    };
+    if(getAr1 != -1){
+        $('ul#nav1>li#profiles,div#profiles-border').addClass("selected")
+    };
+    if(getAr2 != -1){
+        $('ul#nav1>li#product,div#product-border').addClass("selected")
+    };
+    if(getAr3 != -1){
+        $('ul#nav1>li#community,div#com-border').addClass("selected")
+    };
+});
+
+    </script>
+
+
+
+</body>
+</html>

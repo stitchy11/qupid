@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'intro/style.css' %}" xmlns:width="http://www.w3.org/1999/xhtml">{% endblock %}
+{% block title %}Intro Page{% endblock %}
+{% block content %}
+  <div class="card">
+      <div class="card-header">
+          <ul class="nav nav-tabs card-header-tabs" id="bologna-list" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active text-dark" href="#qupid" role="tab" aria-controls="description" aria-selected="true">큐피드 소개</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark"  href="#contact" role="tab" aria-controls="history" aria-selected="false">제휴 문의</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body text-center">
+<!--          <h4 class="card-title">Bologna</h4>-->
+<!--          <h6 class="card-subtitle mb-2">Emilia-Romagna Region, Italy</h6>-->
+           <div class="tab-content mt-3">
+            <div class="tab-pane active" id="qupid" role="tabpanel">
+              <h5 class="card-title">큐피드는 유기견과 엔젤을 잇는 역할을 합니다</h5>
+              <p class="card-text">어쩌구 저쩌고 플랫폼 설명 기능 설명<br/><br/><br/><br/></p>
+            </div>
+            <div class="tab-pane" id="contact" role="tabpanel" aria-labelledby="history-tab">
+              <h5 class="card-title">팀원 소개, 이메일, 연락처 등등</h5>
+              <p class="card-text">어쩌구 저쩌고 <br/><br/><br/><br/></p>
+              <a href="#" class="btn btn-warning btn-lg">후원하기</a>
+            </div>
+        </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+$('#bologna-list a').on('click', function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+</script>
+{% endblock %}

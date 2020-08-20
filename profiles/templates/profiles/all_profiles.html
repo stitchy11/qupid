@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}All Profiles Page{% endblock %}
+{% block style %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'profiles/style.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div id="title">
+        <h1>아이들의 가족이 되어주세요</h1>
+        <div class="search">
+            <input type="text" placeholder="검색어를 입력하세요">
+            <button>검색</button>
+        </div>
+    </div>
+    <hr id="hr"/>
+    <div class="row">
+    {% for profile in profiles %}
+        <div class="col-4">
+            <div class="card">
+                <img class="card-img-top" src="{{profile.image.url}}" alt="Profile Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{profile.name}}</h5>
+                    <p class="card-text">
+                        {{profile.get_gender_display}} 나이(추정): {{profile.age}}
+                    </p>
+                    <a href='{#{% url "profiles:detail" id=profile.id %}#}' class="btn btn-primary stretched-link">더보기</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
